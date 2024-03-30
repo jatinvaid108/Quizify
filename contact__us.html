@@ -7,49 +7,121 @@
     <link rel="stylesheet" href="J3.css">
 
     <style>
-    
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-           
+            background-image: url(./3124570.jpg); 
         }
-    
+
+        /* Container styles */
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
-        
-        h1, h2 {
+        /* Title styles */
+        h2.titles {
             color: #333;
             text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
-        
-        img {
-            max-width: 100%;
+        /* Form label styles */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Input and textarea styles */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 20px); /* Adjusted width with padding */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #6d5633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff6600;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #28302de6;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo styles */
+        .logo img {
+            max-width: 100px;
             height: auto;
         }
 
-        
-        p {
-            line-height: 1.5;
+        /* Navbar links styles */
+        .leftside a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
         }
-        .navbar{
-            margin-bottom: 20px;
-        }
-        .head{
-            font-size: 40px;
-            font-weight: 600;
-            text-align: center;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            margin-top: 30px;
-            margin-bottom: 33px;
+
+        /* Media query for responsive design */
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h2.titles {
+                font-size: 24px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
