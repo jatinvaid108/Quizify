@@ -74,7 +74,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         <div class="signup-box">
             <h1>Sign Up</h1>
             <form id="signup" action="log.html">
@@ -99,11 +99,16 @@
             </form>
         </div>
     </div>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // Animations will only happen once
+        });
+    </script>
     <script>
         document.getElementById("check").addEventListener("change", function togglePassword() {
             var passwordField = document.getElementById('password');
-            var confirmField = document.getElementById('confirm');
+            var confirmField = document.getElementById('confirm_password');
             var checkbox = document.getElementById('check');
 
             if (checkbox.checked) {
