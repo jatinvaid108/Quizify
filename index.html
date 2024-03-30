@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <title>Text management</title>
 
@@ -14,6 +15,7 @@
             background-image: url(Environment-Modelling-Enov8-2023-01-30_13-11-25-1080x675.png);
             backdrop-filter: blur(5px);
             background-size: cover;
+            overflow: hidden;
 
             
         }
@@ -42,10 +44,25 @@
         .blog,
         .pricing,
         .contact,
-
-        
         .login {
             margin: 1rem 2rem;
+            transition: transform 0.25s ease;
+             
+        }
+        .home:hover,
+        .blog:hover,
+        .pricing:hover,
+        .contact:hover,
+        .login:hover {
+            transform: scale(1.25);
+        }
+        .login{
+            font-size: 2rem;
+            background-color: #FF9400;
+            width: 9rem;
+            height: 3.5rem;
+            text-align: center;
+            border-radius: 20px;
         }
 
         .title {
@@ -91,8 +108,11 @@
         }
 
         .image {
-            width: 20rem;
+            width: 13rem;
+            height: 8rem;
             border-radius: 1rem;
+            margin-top: 1rem;
+            margin-left: 2rem;
         }
 
         .logo {
@@ -100,13 +120,10 @@
         }
 
         a {
+            position: relative;
             color: white;
             text-decoration: none;
-
-        }
-
-        a:hover {
-            color: black;
+            font-weight: 700;
 
         }
     </style>
@@ -116,29 +133,32 @@
 <body>
     <div class="blur">
 
-        <div class="navbar">
+        <div class="navbar" data-aos="fade-down">
             <div class="logo">
-                <img class="image" src="new.jpeg">
+                <img class="image" src="quizify-removebg-preview.png">
             </div>
 
             <div class="leftside">
-                <div id="home" class="home"> | <a href="">Home</a> |</div>
-                <div id="blog" class="blog"> | <a target="_blank" href="blog.html">Blog</a> |</div>
-                <div id="pricing" class="pricing"> | <a target="_blank" href="pricing.html">Pricing</a> |</div>
-                <div id="contact" class="contact"> | <a target="_blank" href="contact_us.html">Contact Us</a> |</div>
-                <div id="login" class="login">| <a href="log.html">Login</a> |</div>
+                <div id="home" class="home"><a href="">Home</a> </div>
+                <div id="blog" class="blog"><a target="_blank" href="blog.html">Blog</a></div>
+                <div id="pricing" class="pricing"><a target="_blank" href="pricing.html">Pricing</a></div>
+                <div id="contact" class="contact"> <a target="_blank" href="contact_us.html">Contact Us</a></div>
+                <div id="login" class="login"><a href="log.html">Login</a></div>
             </div>
 
         </div>
 
-        <div class="title">
+        <div class="title" data-aos="zoom-in-down">
             Orchastrate Your Entire <br> QA Process in One Centralized Platform
         </div>
 
-        <div class="titletext"> Get total control over your testing and build repeatable, scalable workflows that work
+        <div class="titletext" data-aos="zoom-in-down"> Get total control over your testing and build repeatable, scalable workflows that work
             for your team </div>
         <div style="display: inline-block;">
-            <div class="buttons">
+            <div class="buttons" data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="300"
+            data-aos-offset="0">
                 <a style="padding-left: 384px;" href="sample.html"><button class="sampletestbutton">Sample Test</button></a>
                 <a style="padding-left: 2px;" href="quiz/index.html"><button class="sampletestbutton">Conduct Test</button></a>
             </div>
@@ -146,5 +166,8 @@
         </div>
     </div>
 </body>
-
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </html>
