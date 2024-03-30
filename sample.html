@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3e3e3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .result {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .score-card {
+            margin-top: 10px;
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Demo Test</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>Question 1: What is the capital of France?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="Paris"> a) Paris
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="London"> b) London
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="Madrid"> c) Madrid
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="Berlin"> d) Berlin
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>Question 2: Which programming language is known for building dynamic web pages?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="Java"> a) Java
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="Python"> b) Python
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="JavaScript"> c) JavaScript
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C++"> d) C++
+                    </label>
+                </div>
+            </div>
+            <div class="question">
+                <p>Question 3: Who wrote the play "Romeo and Juliet"?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="Shakespeare"> a) William Shakespeare
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="Hemingway"> b) Ernest Hemingway
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="Austen"> c) Jane Austen
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="Twain"> d) Mark Twain
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 4: What is the capital of Japan?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="Beijing"> a) Beijing
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="Seoul"> b) Seoul
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="Tokyo"> c) Tokyo
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="Bangkok"> d) Bangkok
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 5: Who painted the Mona Lisa?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="VanGogh"> a) Vincent van Gogh
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="DaVinci"> b) Leonardo da Vinci
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="Picasso"> c) Pablo Picasso
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="Rembrandt"> d) Rembrandt
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 6: What is the chemical symbol for gold?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="Au"> a) Au
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="Ag"> b) Ag
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="Fe"> c) Fe
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="Cu"> d) Cu
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 7: In which year did the Titanic sink?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="1912"> a) 1912
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="1920"> b) 1920
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="1935"> c) 1935
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="1941"> d) 1941
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 8: What is the largest mammal on Earth?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q8" value="Elephant"> a) Elephant
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="BlueWhale"> b) Blue Whale
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="Giraffe"> c) Giraffe
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="Hippopotamus"> d) Hippopotamus
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 9: Who developed the theory of relativity?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q9" value="Newton"> a) Isaac Newton
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="Einstein"> b) Albert Einstein
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="Galileo"> c) Galileo Galilei
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="Curie"> d) Marie Curie
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>Question 10: What is the currency of Brazil?</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q10" value="Euro"> a) Euro
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="Dollar"> b) US Dollar
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="Real"> c) Brazilian Real
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="Peso"> d) Peso
+                    </label>
+                </div>
+            </div>
+
+            <div class="submit-button">
+                <button type="button" onclick="submitQuiz()">Submit Now</button>
+            </div>
+
+            <div class="result" id="quizResult"></div>
+            
+            <canvas id="scoreChart" style="height: 300px; margin-top: 20px;"></canvas>
+        </form>
+    </div>
+    
