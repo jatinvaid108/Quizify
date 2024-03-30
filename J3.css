@@ -51,15 +51,17 @@
     font-weight: bold;
     margin: 0.6rem;
 }
-.image {
-    width: 20rem;
-    border-radius: 1rem;
-}
-
 .logo
 {
     margin: -1.4rem 0;
+    width:10vw;
 }
+
+/* .image {
+    margin-bottom: 10px;
+    border-radius: 1rem;
+} */
+
 a{
     color: white;
     text-decoration: none;
