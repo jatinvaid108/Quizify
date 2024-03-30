@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url(Screenshot\ 2023-10-08\ 193853.png);
+        }
+
+        .container {
+            max-width: 400px;
+            opacity: 0.7;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding-top: 10px;
+            margin-top: 74px;
+            border-radius: 6px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff6600;
+        }
+
+        .forgot-password {
+            text-align: right;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .head {
+            font-size: 50px;
+            font-weight: 600;
+            text-align: center;
+            background-color: #1e4234f7;
+            padding: 2.5rem 6rem;
+            margin-top: -12px;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            color: white;
+            opacity: 1.5;
+        }
+
+        .head {
+            background-color: #06100ce6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="head">
+        Welcome to J<sup><span style="font-size: 27px;">Cube</span></sup> Test Solutions
+    </div>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm" action="index(1).html">
+            <label for="username">Username:</label>
+            <input type="email" id="username" name="username" required><i style="z-index: 1000;position: absolute; top: 338px; left: 940px;"
+                class='bx bxs-user'></i>
+
+            <label for="password">Password:</label><i style="z-index: 1000;position: absolute;top: 421px;left: 940px;"
+                class='bx bxs-lock-alt'></i>
+            <input type="password" id="password" name="password" placeholder="********" required>
+
+            <div class="btn-container">
+                <button class="btn" type="button" onclick="validateLogin()"><a href="index.html"><b>Login</b></a></button>
+                <p class="forgot-password"><a target="_blank" href="#">Forgot Password?</a></p>
+            </div>
+
+            <h3>Don't Have An Account?<a href="signup.html"><b><i>Register</i></b></a></h3>
+        </form>
+    </div>
+    <script>
+        
+    function validateLogin() {
+        var enteredEmail = document.getElementById('username').value;
+        var enteredPassword = document.getElementById('password').value;
+
+        // Replace this with your server-side validation logic or database check
+        var isValidUser = checkCredentials(enteredEmail, enteredPassword);
+
+        if (isValidUser) {
+            alert(`Welcome ${enteredEmail}!`);
+            document.getElementById('loginForm').submit();
+        } else {
+            alert('Invalid email or password. Please try again.');
+        }
+    }
+
+    function checkCredentials(email, password) {
+        // Replace this with your server-side validation logic or database check
+        // Example: Check against a database or call a server-side API
+        // For simplicity, using hardcoded values for demonstration
+        var storedEmail = 'test@example.com';
+        var storedPassword = 'password';
+
+        return email === storedEmail && password === storedPassword;
+    }
+
+
+    </script>
+</body>
+
+</html>
