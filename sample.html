@@ -289,6 +289,36 @@
             }
     
             scoreCardHTML += "</ul></div>";
+            let scoreData = [score, Object.keys(correctAnswers).length - score];
+
+const ctx = chartContainer.getContext("2d");
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Correct', 'Incorrect'],
+        datasets: [{
+            label: 'Quiz Result',
+            data: scoreData,
+            backgroundColor: ['green', 'red'],
+            borderColor: ['green', 'red'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: Object.keys(correctAnswers).length
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+});
+
     
             resultElement.innerHTML = `<div class='result'>Your score: ${score} out of ${Object.keys(correctAnswers).length}</div>`;
         }

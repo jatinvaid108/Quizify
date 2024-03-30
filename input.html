@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .question-answer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="myForm">
+            <div class="input-container">
+                <label for="question">Question:</label>
+                <input type="text" id="question" class="question">
+            </div>
+
+            <div class="input-container">
+                <label for="answer">Answer:</label>
+                <input type="text" id="answer" class="answer">
+            </div>
+
+            <input type="submit" >
+        </form>
+
+        <div class="question-answer">
+            <p> Question: <span class="ques"></span></p>
+            <p> Answer: <span class="ans"></span></p>
+        </div>
+
+        <button onclick="printqa();">Print elements</button>
+
+        <div>
+            <span class="printing"></span>
+        </div>
+    </div>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>
