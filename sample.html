@@ -252,4 +252,46 @@
             <canvas id="scoreChart" style="height: 300px; margin-top: 20px;"></canvas>
         </form>
     </div>
+    <script>
+        function submitQuiz() {
+            const form = document.getElementById("quizForm");
+            const resultElement = document.getElementById("quizResult");
+            const chartContainer = document.getElementById("scoreChart");
+
+            const correctAnswers = {
+                q1: "Paris",
+                q2: "JavaScript",
+                q3: "William Shakespeare",
+                q4: "Tokyo",
+                q5: "Leonardo da Vinci",
+                q6: "Au",
+                q7: "1912",
+                q8: "Blue Whale",
+                q9: "Albert Einstein",
+                q10: "Brazilian Real"
+            };
     
+            let score = 0;
+            let scoreCardHTML = "<div class='score-card'><h2>Scorecard</h2><ul>";
+    
+            
+            for (const question in correctAnswers) {
+                const selectedAnswer = form.elements[question].value;
+    
+                scoreCardHTML += `<li>${question}: `;
+                
+                if (selectedAnswer === correctAnswers[question]) {
+                    score++;
+                    scoreCardHTML += `<span class='correct-answer'>Correct</span></li>`;
+                } else {
+                    scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
+                }
+            }
+    
+            scoreCardHTML += "</ul></div>";
+    
+            resultElement.innerHTML = `<div class='result'>Your score: ${score} out of ${Object.keys(correctAnswers).length}</div>`;
+        }
+    </script>
+</body>
+</html> 
