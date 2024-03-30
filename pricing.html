@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Management System - Pricing</title>
+    <link rel="stylesheet" href="J3.css">
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: beige;
+        }
+
+       
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .titles {
+            font-size: 34px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .plan {
+            border: 2px solid black;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .plan h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .price {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff6600;
+        }
+
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .navbar{
+            background-color: #778780cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img class="image" src="new.jpeg">
+        </div>
+
+        <div class="leftside">
+            <div id="home" class="home"> | <a  href="index.html">Home</a> |</div>
+            <div id="blog" class="blog"> | <a  href="blog.html">Blog</a> |</div>
+            
+            <div id="contact" class="contact"> | <a  href="contact_us.html">Contact Us</a> |</div>
+            <div id="login" class="login">| <a href="log.html">Login</a> |</div>
+        </div>
+
+    </div>
+    <div class="container">
+        <h2 class="titles">Choose a Plan</h2>
+        <div class="plan">
+            <h2>Basic Plan</h2>
+            <p class="price">	&#8377;500/month</p>
+            <p>Includes essential features for small teams.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+
+        <div class="plan">
+            <h2>Pro Plan</h2>
+            <p class="price">	&#8377;1500/month</p>
+            <p>Perfect for larger teams with advanced needs.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+
+        <div class="plan">
+            <h2>Enterprise Plan</h2>
+            <p class="price">Contact Us</p>
+            <p>Customized solutions for enterprise-level organizations.</p>
+            <a href="contact_us.html" class="btn">Contact Us</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Test Management System</p>
+    </footer>
+</body>
+</html>
