@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url(Screenshot\ 2023-10-08\ 193853.png);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-box {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #ff6600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <form id="signup" action="log.html">
+                <div class="input-container">
+                    <label for="username">Username</label>
+                    <input style="width: 95%;" type="text" id="username" name="username" required>
+                </div>
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input style="width: 95%;" type="email" id="email" name="email" placeholder="email" required>
+                </div>
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input style="width: 95%;" type="password" id="password" name="password" required>
+                </div>
+                <div class="input-container">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input style="width: 95%;" type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                <input type="checkbox" id="check"> Show Password
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("check").addEventListener("change", function togglePassword() {
+            var passwordField = document.getElementById('password');
+            var confirmField = document.getElementById('confirm');
+            var checkbox = document.getElementById('check');
+
+            if (checkbox.checked) {
+                passwordField.type = 'text';
+                confirmField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+                confirmField.type = 'password';
+            }
+        } ) 
+        
+
+        document.getElementById('registreform').addEventListener('submit', function (event) {
+
+            var email = document.getElementById('emailid').value;
+            var password = document.getElementById('password').value;
+
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+
+            alert('Registration successful! Please proceed to login.');
+        });
+    </script>
+
+</body>
+
+</html>
