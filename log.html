@@ -125,6 +125,12 @@
             <h3>Don't Have An Account?<a href="signup.html"><b><i>Register</i></b></a></h3>
         </form>
     </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // Animations will only happen once
+        });
+    </script>
     <script>
         function validateLogin() {
             var enteredEmail = document.getElementById('username').value;
@@ -137,7 +143,8 @@
                 alert(`Welcome ${enteredEmail}!`);
                 document.getElementById('loginForm').submit();
             } else {
-                alert('Invalid email or password. Please try again.');
+                alert('Congraluations ! You have successfully registered.');
+                // alert('Invalid email or password. Please try again.');
             }
         }
 
