@@ -75,14 +75,118 @@
             border-radius: 5px;
             margin-top: 20px;
         }
-        .navbar {
-            background-color: #28302de6;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .blur{
+            height: 100vh;
         }
 
+        .navbar {
+            background-color: #080f0cc9;
+            padding: 2.5rem 6rem;
+            margin-top: -12px;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            color: white;
+            display: flex;
+            font-size: 21px;
+            font-family: cursive;
+            justify-content: space-between;
+        }
+
+        .leftside {
+            display: flex;
+        }
+
+        .home,
+        .blog,
+        .pricing,
+        .contact,
+        .login {
+            margin: 1rem 2rem;
+            transition: transform 0.25s ease;
+             
+        }
+        .home:hover,
+        .blog:hover,
+        .pricing:hover,
+        .contact:hover,
+        .login:hover {
+            transform: scale(1.25);
+        }
+        .login{
+            font-size: 2rem;
+            background-color: #FF9400;
+            width: 9rem;
+            height: 3.5rem;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .title {
+            margin-top: 6rem;
+            font-size: 48px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-family: sans-serif;
+            line-height: 3.8rem;
+            margin-bottom: 40px;
+        }
+
+        .titletext {
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 1rem 0;
+            margin-bottom: 30px;
+        }
+
+         .buttons {
+            text-align: center;
+            display: flex; 
+            flex-direction: column;
+            gap: 1rem;
+            
+        } 
+          
+
+        .sampletestbutton:hover {
+            background-color: #FF9400;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        .sampletestbutton {
+            background-color: black;
+            border: none;
+            border-radius: 1.4rem;
+            padding: 0.9rem 3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.25s ease;
+     
+        }
+
+        .image {
+            width: 13rem;
+            height: 9rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            margin-left: 2rem;
+        }
+
+        .logo {
+            margin: -1.4rem 0;
+        }
+
+        a {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+
+        }
         .logo img {
             max-width: 100px;
             height: auto;
@@ -112,24 +216,26 @@
 </head>
 <body>
     <div class="blur">
-    <div class="navbar">
-        <div class="logo" >
-            <img class="image" src="quizify-removebg-preview.png">
-        </div>
-        
-        <div class="leftside">
-            <div id="home" class="home"> | <a href="index.html">Home</a> |</div>
-            <div id="blog" class="blog"> | <a href="blog.html">Blog</a> |</div>
-            <div id="pricing" class="pricing"> | <a href="pricing.html">Pricing</a> |</div>
-            <!-- <div id="contact" class="contact"> | <a href="">Contact Us</a> |</div> -->
-            <div id="login" class="login">| <a href="log.html">Login</a> |</div>
-        </div>
 
-    </div>
+        <div class="navbar" data-aos="fade-down">
+            <div class="logo">
+                <img class="image" src="quizify-removebg-preview.png">
+            </div>
+
+            <div class="leftside">
+                <div id="home" class="home"><a href="">Home</a> </div>
+                <div id="blog" class="blog"><a  href="blog.html">Blog</a></div>
+                <div id="pricing" class="pricing"><a href="pricing.html">Pricing</a></div>
+                <div id="contact" class="contact"> <a href="contact__us.html">Contact Us</a></div>
+                <div id="login" class="login"><a href="log.html">Login</a></div>
+            </div>
+
+        </div>
     <div class="container">
         <h2 class="titles">Contact Us</h2>
         <div class="contact-form">
-            <form action="#" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="1e942434-bfe0-4757-a14f-0bbacf4f51f9">
                 <label for="name" >&emsp; Name:</label>
                 <input placeholder="Please type your name" type="text" id="name" name="name" required>
 
