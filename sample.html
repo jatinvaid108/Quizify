@@ -279,18 +279,34 @@
     let score = 0;
     let scoreCardHTML = "<div class='score-card'><h2>Scorecard</h2><ul>";
 
-    for (const question in correctAnswers) {
-        const selectedAnswer = form.elements[question].value;
+        for (const question in correctAnswers) {
+        const radioButtons = form.elements[question];
+        console.log(`Question: ${question}, Radio Buttons:`, radioButtons);
 
-        console.log(`Question: ${question}, Selected Answer: ${selectedAnswer}, Correct Answer: ${correctAnswers[question]}`);
+        let anyChecked = false;
 
-        scoreCardHTML += `<li>${question}: `;
+        for (let i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                anyChecked = true;
+                const selectedAnswer = radioButtons[i].nextSibling.nodeValue.trim(); // Get the text content of the label
 
-        if (selectedAnswer === correctAnswers[question]) {
-            score++;
-            scoreCardHTML += `<span class='correct-answer'>Correct</span></li>`;
-        } else {
-            scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
+                console.log(`Question: ${question}, Selected Answer: ${selectedAnswer}, Correct Answer: ${correctAnswers[question]}`);
+
+                scoreCardHTML += `<li>${question}: `;
+
+                if (selectedAnswer === correctAnswers[question]) {
+                    score++;
+                    scoreCardHTML += `<span class='correct-answer'>Correct</span></li>`;
+                } else {
+                    scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
+                }
+
+                break;
+            }
+        }
+
+        if (!anyChecked) {
+            scoreCardHTML += `<li>${question}: <span class='incorrect-answer'>Incorrect</span> (No answer provided)</li>`;
         }
     }
 
