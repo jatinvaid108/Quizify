@@ -71,13 +71,117 @@
             text-align: center;
             padding: 10px 0;
         }
-        .navbar{
-            /* background-color: #778780cc; */
-            background-color: #28302de6;
-            padding: 10px 20px;
+        .blur{
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color: #080f0cc9;
+            padding: 2.5rem 6rem;
+            margin-top: -12px;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            color: white;
             display: flex;
+            font-size: 21px;
+            font-family: cursive;
             justify-content: space-between;
-            align-items: center;
+        }
+
+        .leftside {
+            display: flex;
+        }
+
+        .home,
+        .blog,
+        .pricing,
+        .contact,
+        .login {
+            margin: 1rem 2rem;
+            transition: transform 0.25s ease;
+             
+        }
+        .home:hover,
+        .blog:hover,
+        .pricing:hover,
+        .contact:hover,
+        .login:hover {
+            transform: scale(1.25);
+        }
+        .login{
+            font-size: 2rem;
+            background-color: #FF9400;
+            width: 9rem;
+            height: 3.5rem;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .title {
+            margin-top: 6rem;
+            font-size: 48px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-family: sans-serif;
+            line-height: 3.8rem;
+            margin-bottom: 40px;
+        }
+
+        .titletext {
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 1rem 0;
+            margin-bottom: 30px;
+        }
+
+         .buttons {
+            text-align: center;
+            display: flex; 
+            flex-direction: column;
+            gap: 1rem;
+            
+        } 
+          
+
+        .sampletestbutton:hover {
+            background-color: #FF9400;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        .sampletestbutton {
+            background-color: black;
+            border: none;
+            border-radius: 1.4rem;
+            padding: 0.9rem 3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.25s ease;
+     
+        }
+
+        .image {
+            width: 13rem;
+            height: 9rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            margin-left: 2rem;
+        }
+
+        .logo {
+            margin: -1.4rem 0;
+        }
+
+        a {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+
         }
         .leftside  {
             color: white;
@@ -89,31 +193,37 @@
 <body>
     <div class="navbar">
         <div class="logo">
-            <!-- <img class="image" src="new.jpeg"> -->
+            
             <img class="image" width="100vh" src="quizify-removebg-preview.png">
         </div>
+    <div class="blur">
 
-        <div class="leftside">
-            <div id="home" class="home"> | <a  href="index.html">Home</a> |</div>
-            <div id="blog" class="blog"> | <a  href="blog.html">Blog</a> |</div>
-            
-            <div id="contact" class="contact"> | <a  href="contact__us.html">Contact Us</a> |</div>
-            <div id="login" class="login">| <a href="log.html">Login</a> |</div>
+        <div class="navbar" data-aos="fade-down">
+            <div class="logo">
+                <img class="image" src="quizify-removebg-preview.png">
+            </div>
+
+            <div class="leftside">
+                <div id="home" class="home"><a href="">Home</a> </div>
+                <div id="blog" class="blog"><a  href="blog.html">Blog</a></div>
+                <div id="pricing" class="pricing"><a href="pricing.html">Pricing</a></div>
+                <div id="contact" class="contact"> <a href="contact__us.html">Contact Us</a></div>
+                <div id="login" class="login"><a href="log.html">Login</a></div>
+            </div>
+
         </div>
-
-    </div>
     <div class="container">
         <h2 class="titles">Choose a Plan</h2>
         <div class="plan">
             <h2>Basic Plan</h2>
-            <p class="price">	&#8377;500/month</p>
+            <p class="price">	&#8377;499/month</p>
             <p>Includes essential features for small teams.</p>
             <a href="#" class="btn">Get Started</a>
         </div>
 
         <div class="plan">
             <h2>Pro Plan</h2>
-            <p class="price">	&#8377;1500/month</p>
+            <p class="price">	&#8377;1499/month</p>
             <p>Perfect for larger teams with advanced needs.</p>
             <a href="#" class="btn">Get Started</a>
         </div>
