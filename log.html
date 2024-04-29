@@ -119,7 +119,7 @@
 
             <div class="btn-container">
                 <button class="btn" type="button" onclick="validateLogin()"><a href="index.html"><b>Login</b></a></button>
-                <p class="forgot-password"><a target="_blank" href="#">Forgot Password?</a></p>
+                <p class="forgot-password"><a target="_blank" href="forgot.html">Forgot Password?</a></p>
             </div>
 
             <h3>Don't Have An Account?<a href="signup.html"><b><i>Register</i></b></a></h3>
@@ -135,20 +135,16 @@
         function validateLogin() {
             var enteredEmail = document.getElementById('username').value;
             var enteredPassword = document.getElementById('password').value;
-
-            var storedEmail = 'test@example.com';
-            var storedPassword = 'password';
-
-            if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
+    
+            var regex = /^[a-z0-9]+$/;
+    
+            if (regex.test(enteredEmail) ) {
                 alert(`Welcome ${enteredEmail}!`);
-                document.getElementById('loginForm').submit();
+                window.open('sample.html')
             } else {
-                alert('Congraluations ! You have successfully registered.');
-                // alert('Invalid email or password. Please try again.');
-                window.location.href = 'sample.html';
+                alert('Invalid email or password. Please try again.');
             }
         }
-
     </script>
 </body>
 
