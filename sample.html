@@ -68,6 +68,8 @@
         <button onclick="startQuiz()">Start Test</button>
         <div id="quizSection" style="display: none;">
             <p id="timer" style="float: right; margin-top: -30px; background-color: darkgrey; width: 11rem; height: 2.5rem; font-size: 1.1rem; font-weight: 800; text-align: center; padding-top: 10px; border-radius: 40px;">Time Left: 1:00</p>
+        </div>
+            <audio id="timerSound" src="sound.mp3"></audio>
         <form id="quizForm">
             <div class="question">
                 <p>Question 1: What is the capital of France?</p>
@@ -259,6 +261,7 @@
     </div>
     <script>
         let timerInterval;
+        const timerSound = new Audio('sound.mp3'); // Adjust the file name/path accordingly
         
         function startQuiz() {
             const startButton = document.querySelector('button');
@@ -273,18 +276,23 @@
             quizSection.style.display = 'block';
         
             // Initialize timer with 1 minute
-            updateTimerDisplay(60, timerElement);
+            updateTimerDisplay(61, timerElement);
         
             // Start the timer
-            let endTime = new Date().getTime() + 60000; // End time in milliseconds (current time + 1 minute)
+            let endTime = new Date().getTime() + 62000; // End time in milliseconds (current time + 1 minute)
             timerInterval = setInterval(function() {
                 let currentTime = new Date().getTime();
                 let secondsLeft = Math.round((endTime - currentTime) / 1000);
                 if (secondsLeft <= 0) {
                     clearInterval(timerInterval);
                     submitQuiz();
+                    window.scrollTo(0, document.body.scrollHeight);
                 } else {
                     updateTimerDisplay(secondsLeft, timerElement);
+                    // Play sound when 10 seconds left
+                    if (secondsLeft === 61) {
+                        timerSound.play();
+                    }
                 }
             }, 1000);
         
@@ -292,6 +300,7 @@
             quizForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 clearInterval(timerInterval); // Stop the timer
+                timerSound.pause(); // Pause the sound if it's playing
                 submitQuiz();
             });
         }
@@ -306,6 +315,7 @@
             // Quiz submission logic remains the same
         }
         </script>
+        
         
         
         
