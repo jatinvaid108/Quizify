@@ -65,6 +65,9 @@
 <body>
     <div class="container">
         <h1>Demo Test</h1>
+        <button onclick="startQuiz()">Start Test</button>
+        <div id="quizSection" style="display: none;">
+            <p id="timer" style="float: right; margin-top: -30px; background-color: darkgrey; width: 11rem; height: 2.5rem; font-size: 1.1rem; font-weight: 800; text-align: center; padding-top: 10px; border-radius: 40px;">Time Left: 1:00</p>
         <form id="quizForm">
             <div class="question">
                 <p>Question 1: What is the capital of France?</p>
@@ -255,107 +258,164 @@
         </form>
     </div>
     <script>
-        function submitQuiz() {
-    console.log("submitQuiz function called");
-
-    const form = document.getElementById("quizForm");
-    const resultElement = document.getElementById("quizResult");
-    const chartContainer = document.getElementById("scoreChart");
-
-    // Step 1: Check if Chart.js is loaded
-    console.log("Chart.js loaded:", Chart !== undefined);
-
-    const correctAnswers = {
-        q1: "Paris",
-        q2: "JavaScript",
-        q3: "William Shakespeare",
-        q4: "Tokyo",
-        q5: "Leonardo da Vinci",
-        q6: "Au",
-        q7: "1912",
-        q8: "Blue Whale",
-        q9: "Albert Einstein",
-        q10: "Brazilian Real"
-    };
-
-    let score = 0;
-    let scoreCardHTML = "<div class='score-card'><h2>Scorecard</h2><ul>";
-
-        for (const question in correctAnswers) {
-        const radioButtons = form.elements[question];
-        console.log(`Question: ${question}, Radio Buttons:`, radioButtons);
-
-        let anyChecked = false;
-
-        for (let i = 0; i < radioButtons.length; i++) {
-            if (radioButtons[i].checked) {
-                anyChecked = true;
-                const selectedAnswer = radioButtons[i].nextSibling.nodeValue.trim(); // Get the text content of the label
-
-                console.log(`Question: ${question}, Selected Answer: ${selectedAnswer}, Correct Answer: ${correctAnswers[question]}`);
-
-                scoreCardHTML += `<li>${question}: `;
-
-                if (selectedAnswer === correctAnswers[question]) {
-                    score++;
-                    scoreCardHTML += `<span class='correct-answer'>Correct</span></li>`;
+        let timerInterval;
+        
+        function startQuiz() {
+            const startButton = document.querySelector('button');
+            const quizSection = document.getElementById('quizSection');
+            const timerElement = document.getElementById('timer');
+            const quizForm = document.getElementById('quizForm');
+            const resultElement = document.getElementById("quizResult");
+            const chartContainer = document.getElementById("scoreChart");
+        
+            // Hide start button and show quiz section
+            startButton.style.display = 'none';
+            quizSection.style.display = 'block';
+        
+            // Initialize timer with 1 minute
+            updateTimerDisplay(60, timerElement);
+        
+            // Start the timer
+            let endTime = new Date().getTime() + 60000; // End time in milliseconds (current time + 1 minute)
+            timerInterval = setInterval(function() {
+                let currentTime = new Date().getTime();
+                let secondsLeft = Math.round((endTime - currentTime) / 1000);
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
                 } else {
-                    scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
+                    updateTimerDisplay(secondsLeft, timerElement);
                 }
-
-                break;
-            }
+            }, 1000);
+        
+            // Functionality for submit button
+            quizForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                clearInterval(timerInterval); // Stop the timer
+                submitQuiz();
+            });
         }
+        
+        function updateTimerDisplay(secondsLeft, timerElement) {
+            const minutes = Math.floor(secondsLeft / 60);
+            const seconds = secondsLeft % 60;
+            timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+        
+        function submitQuiz() {
+            // Quiz submission logic remains the same
+        }
+        </script>
+        
+        
+        
+  <script>
+    function submitQuiz() {
+console.log("submitQuiz function called");
 
-        if (!anyChecked) {
-            scoreCardHTML += `<li>${question}: <span class='incorrect-answer'>Incorrect</span> (No answer provided)</li>`;
+const form = document.getElementById("quizForm");
+const resultElement = document.getElementById("quizResult");
+const chartContainer = document.getElementById("scoreChart");
+
+// Step 1: Check if Chart.js is loaded
+console.log("Chart.js loaded:", Chart !== undefined);
+
+const correctAnswers = {
+    q1: "Paris",
+    q2: "JavaScript",
+    q3: "William Shakespeare",
+    q4: "Tokyo",
+    q5: "Leonardo da Vinci",
+    q6: "Au",
+    q7: "1912",
+    q8: "Blue Whale",
+    q9: "Albert Einstein",
+    q10: "Brazilian Real"
+};
+
+let score = 0;
+let scoreCardHTML = "<div class='score-card'><h2>Scorecard</h2><ul>";
+
+    for (const question in correctAnswers) {
+    const radioButtons = form.elements[question];
+    console.log(`Question: ${question}, Radio Buttons:`, radioButtons);
+
+    let anyChecked = false;
+
+    for (let i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            anyChecked = true;
+            const selectedAnswer = radioButtons[i].nextSibling.nodeValue.trim(); // Get the text content of the label
+
+            console.log(`Question: ${question}, Selected Answer: ${selectedAnswer}, Correct Answer: ${correctAnswers[question]}`);
+
+            scoreCardHTML += `<li>${question}: `;
+
+            if (selectedAnswer === correctAnswers[question]) {
+                score++;
+                scoreCardHTML += `<span class='correct-answer'>Correct</span></li>`;
+            } else {
+                scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
+            }
+
+            break;
         }
     }
 
-    scoreCardHTML += "</ul></div>";
-    let scoreData = [score, Object.keys(correctAnswers).length - score];
-
-    // Step 2: Verify if the canvas element is accessible
-    console.log("Chart container:", chartContainer);
-
-    const ctx = chartContainer.getContext("2d");
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Correct', 'Incorrect'],
-            datasets: [{
-                label: 'Quiz Result',
-                data: scoreData,
-                backgroundColor: ['green', 'red'],
-                borderColor: ['green', 'red'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: Object.keys(correctAnswers).length
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                },
-                chartAreaBorder: {
-                    borderColor: 'red',
-                    borderWidth: 2,
-                    borderDash: [ 5, 5 ],
-                    borderDashOffset: 2,
-                }
-            }
-        }
-    });
-
-    resultElement.innerHTML = `<div class='result'>Your score: ${score} out of ${Object.keys(correctAnswers).length}</div>`;
+    if (!anyChecked) {
+        scoreCardHTML += `<li>${question}: <span class='incorrect-answer'>Incorrect</span> (No answer provided)</li>`;
+    }
 }
 
-    </script>
+scoreCardHTML += "</ul></div>";
+let scoreData = [score, Object.keys(correctAnswers).length - score];
+
+// Step 2: Verify if the canvas element is accessible
+console.log("Chart container:", chartContainer);
+
+const ctx = chartContainer.getContext("2d");
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Correct', 'Incorrect'],
+        datasets: [{
+            label: 'Quiz Result',
+            data: scoreData,
+            backgroundColor: ['green', 'red'],
+            borderColor: ['green', 'red'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: Object.keys(correctAnswers).length
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            chartAreaBorder: {
+                borderColor: 'red',
+                borderWidth: 2,
+                borderDash: [ 5, 5 ],
+                borderDashOffset: 2,
+            }
+        }
+    }
+});
+
+resultElement.innerHTML = `<div class='result'>Your score: ${score} out of ${Object.keys(correctAnswers).length}</div>`;
+}
+
+</script>
+
+
+
+
+    
 </body>
 
 </html>
