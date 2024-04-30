@@ -11,8 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            background-image: url(Screenshot\ 2023-10-08\ 193853.png);
+            background-image: url("Screenshot\ 2023-10-08\ 193853.png");
         }
 
         .container {
@@ -77,62 +76,120 @@
     <div class="container" data-aos="fade-up">
         <div class="signup-box">
             <h1>Sign Up</h1>
-            <form id="signup" action="log.html">
+            <form id="signup" action="log.html" method="post">
                 <div class="input-container">
                     <label for="username">Username</label>
-                    <input style="width: 95%;" type="text" id="username" name="username" required>
+                    <input style="width: 95%;" type="text" id="username" name="username"placeholder="Username" required>
                 </div>
                 <div class="input-container">
                     <label for="email">Email</label>
-                    <input style="width: 95%;" type="email" id="email" name="email" placeholder="email" required>
+                    <input style="width: 95%;" type="email" id="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="input-container">
                     <label for="password">Password</label>
-                    <input style="width: 95%;" type="password" id="password" name="password" required>
+                    <input style="width: 95%;" type="password" id="password" name="password" placeholder="********" required>
                 </div>
-                <div class="input-container">
+                <!-- <div class="input-container">
                     <label for="confirm_password">Confirm Password</label>
                     <input style="width: 95%;" type="password" id="confirm_password" name="confirm_password" required>
-                </div>
+                </div> -->
                 <input type="checkbox" id="check"> Show Password
-                <button type="submit" class="btn">Sign Up</button>
+                <button type="button" id="register" name="register" class="btn btn-success">Register Now</button>
             </form>
         </div>
     </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: true, // Animations will only happen once
+            once: true,  
         });
     </script>
-    <script>
-        document.getElementById("check").addEventListener("change", function togglePassword() {
-            var passwordField = document.getElementById('password');
-            var confirmField = document.getElementById('confirm_password');
-            var checkbox = document.getElementById('check');
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCp7_6-n4q8L8OFAZPw9C0Qy93zN0n3Le4",
+      authDomain: "quizify-55567.firebaseapp.com",
+      projectId: "quizify-55567",
+      storageBucket: "quizify-55567.appspot.com",
+      messagingSenderId: "142004520290",
+      appId: "1:142004520290:web:247eea3264dba82bd9d83b",
+      measurementId: "G-BED8D31CBT"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    console.log(app);
+      //----- New Registration code start	  
+	  document.getElementById("register").addEventListener("click", function() {
+		  var email =  document.getElementById("email").value;
+		  var password = document.getElementById("password").value;
+		  //For new registration
+		  createUserWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    console.log(user);
+		    alert("Registration successfully!!");
+            window.location.href = 'sample.html';
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    // ..
+		    console.log(errorMessage);
+		    alert(error);
+		  });		  		  
+	  });
+	  //----- End
 
-            if (checkbox.checked) {
-                passwordField.type = 'text';
-                confirmField.type = 'text';
-            } else {
-                passwordField.type = 'password';
-                confirmField.type = 'password';
-            }
-        } ) 
-        
+	  //----- Login code start	  
+	//   document.getElementById("login").addEventListener("click", function() {
+	// 	  var email =  document.getElementById("login_email").value;
+	// 	  var password = document.getElementById("login_password").value;
 
-        document.getElementById('registreform').addEventListener('submit', function (event) {
+	// 	  signInWithEmailAndPassword(auth, email, password)
+	// 	  .then((userCredential) => {
+	// 	    // Signed in 
+	// 	    const user = userCredential.user;
+	// 	    console.log(user);
+	// 	    alert(user.email+" Login successfully!!!");
+	// 	    document.getElementById('logout').style.display = 'block';
+	// 	    // ...
+	// 	  })
+	// 	  .catch((error) => {
+	// 	    const errorCode = error.code;
+	// 	    const errorMessage = error.message;
+	// 	    console.log(errorMessage);
+	// 	    alert(errorMessage);
+	// 	  });		  		  
+	//   });
+	  //----- End
 
-            var email = document.getElementById('emailid').value;
-            var password = document.getElementById('password').value;
-
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userPassword', password);
-
-            alert('Registration successful Please proceed to login.');
-        });
-    </script>
-
+	  //----- Logout code start	  
+	//   document.getElementById("logout").addEventListener("click", function() {
+	// 	  signOut(auth).then(() => {
+	// 		  // Sign-out successful.
+	// 		  console.log('Sign-out successful.');
+	// 		  alert('Sign-out successful.');
+	// 		  document.getElementById('logout').style.display = 'none';
+	// 		}).catch((error) => {
+	// 		  // An error happened.
+	// 		  console.log('An error happened.');
+	// 		});		  		  
+	//   });
+	  //----- End
+</script>
 </body>
 
 </html>
