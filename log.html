@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            background-image: url(Screenshot\ 2023-10-08\ 193853.png);
+            background-image: url("Screenshot 2023-10-08 193853.png");
         }
 
         .container {
@@ -108,43 +108,62 @@
     </div>
     <div class="container">
         <h1>Login</h1>
-        <form id="loginForm" action="index(1).html">
+        <form id="loginForm" action="sample.html" method="post">
             <label for="username">Username:</label>
-            <input type="email" id="username" name="username" required><i style="z-index: 1000;position: absolute; top: 338px; left: 940px;"
+            <input type="email" id="login_email" name="username" required><i style="z-index: 1000;position: absolute; top: 338px; left: 940px;"
                 class='bx bxs-user'></i>
 
             <label for="password">Password:</label><i style="z-index: 1000;position: absolute;top: 421px;left: 940px;"
                 class='bx bxs-lock-alt'></i>
-            <input type="password" id="password" name="password" placeholder="********" required>
+            <input type="password" id="login_password" name="password" placeholder="********" required>
 
             <div class="btn-container">
-                <button class="btn" type="button" onclick="validateLogin()"><a href="index.html"><b>Login</b></a></button>
+                <button class="btn" type="button" id="loginBtn"><b>Login</b></button>
                 <p class="forgot-password"><a target="_blank" href="forgot.html">Forgot Password?</a></p>
             </div>
 
             <h3>Don't Have An Account?<a href="signup.html"><b><i>Register</i></b></a></h3>
         </form>
     </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true, // Animations will only happen once
+    <script type="module">
+        // Your web app's Firebase configuration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCp7_6-n4q8L8OFAZPw9C0Qy93zN0n3Le4",
+            authDomain: "quizify-55567.firebaseapp.com",
+            projectId: "quizify-55567",
+            storageBucket: "quizify-55567.appspot.com",
+            messagingSenderId: "142004520290",
+            appId: "1:142004520290:web:247eea3264dba82bd9d83b",
+            measurementId: "G-BED8D31CBT"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Add event listener after DOM is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("loginBtn").addEventListener("click", function () {
+                var email = document.getElementById("login_email").value;
+                var password = document.getElementById("login_password").value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        var user = userCredential.user;
+                        console.log(user);
+                        alert(user.email + " Login successfully!!!");
+                        window.location.href = 'sample.html';
+                    })
+                    .catch((error) => {
+                        var errorMessage = error.message;
+                        console.log(errorMessage);
+                        alert(errorMessage);
+                    });
+            });
         });
-    </script>
-    <script>
-        function validateLogin() {
-            var enteredEmail = document.getElementById('username').value;
-            var enteredPassword = document.getElementById('password').value;
-    
-            var regex = /^[a-z0-9]+$/;
-    
-            if (regex.test(enteredEmail) ) {
-                alert(`Welcome ${enteredEmail}!`);
-                window.open('sample.html')
-            } else {
-                alert('Invalid email or password. Please try again.');
-            }
-        }
     </script>
 </body>
 
