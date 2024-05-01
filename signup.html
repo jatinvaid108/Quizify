@@ -153,6 +153,15 @@
 	  });
 	  //----- End
 
+      document.getElementById("check").addEventListener("change", function() {
+	    var passwordField = document.getElementById("password");
+	    if (this.checked) {
+	      passwordField.type = "text";
+	    } else {
+	      passwordField.type = "password";
+	    }
+	  });
+
 	  //----- Login code start	  
 	//   document.getElementById("login").addEventListener("click", function() {
 	// 	  var email =  document.getElementById("login_email").value;
