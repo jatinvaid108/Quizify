@@ -104,6 +104,14 @@ a:hover {
     transform: scale(0.95);
     background-image: linear-gradient(to bottom, #FF9400, #FFB84D);
 }
+.incorrect-answer {
+        color: red;
+        font-weight: bold;
+    }
+    .correct-answer {
+        color: green;
+        font-weight: bold;
+    }
 
     </style>
 </head>
@@ -473,21 +481,16 @@ a:hover {
         
         
   <script>
-    function submitQuiz() {
-        clearInterval(timerInterval);
-        timerSound.pause();
-        timerSound.currentTime = 0;
-         
-console.log("submitQuiz function called");
+   function submitQuiz() {
+    clearInterval(timerInterval);
+    timerSound.pause();
+    timerSound.currentTime = 0;
 
-const form = document.getElementById("quizForm");
-const resultElement = document.getElementById("quizResult");
-const chartContainer = document.getElementById("scoreChart");
+    const form = document.getElementById("quizForm");
+    const resultElement = document.getElementById("quizResult");
+    const chartContainer = document.getElementById("scoreChart");
 
-// Step 1: Check if Chart.js is loaded
-console.log("Chart.js loaded:", Chart !== undefined);
-
-const correctAnswers = {
+    const correctAnswers = {
     q1: "Paris",
     q2: "JavaScript",
     q3: "William Shakespeare",
@@ -499,7 +502,7 @@ const correctAnswers = {
     q9: "Albert Einstein",
     q10: "Brazilian Real",
     q11: "US Dollar",
-    q12: "Isaac Newtons",
+    q12: "Isaac Newton",
     q13: "Ag",
     q14: "Python",
     q15: "William Shakespeare",
@@ -507,30 +510,28 @@ const correctAnswers = {
 };
 
 let score = 0;
-let scoreCardHTML = "<div class='score-card'><h2>Scorecard</h2><ul>";
+    let scoreCardHTML = "<div class='score-card'><h2>Scorecard</h2><ul>";
 
     for (const question in correctAnswers) {
-    const radioButtons = form.elements[question];
-    console.log(`Question: ${question}, Radio Buttons:`, radioButtons);
+        const radioButtons = form.elements[question];
 
-    let anyChecked = false;
+        let anyChecked = false;
 
-    for (let i = 0; i < radioButtons.length; i++) {
-        if (radioButtons[i].checked) {
-            anyChecked = true;
-            const selectedAnswer = radioButtons[i].nextSibling.nodeValue.trim(); // Get the text content of the label
+        for (let i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                anyChecked = true;
+                const selectedAnswer = radioButtons[i].nextSibling.nodeValue.trim(); // Get the text content of the label
 
-            console.log(`Question: ${question}, Selected Answer: ${selectedAnswer}, Correct Answer: ${correctAnswers[question]}`);
+                if (selectedAnswer === correctAnswers[question]) {
+                    score++;
+                    radioButtons[i].parentNode.classList.add('correct-answer');
+                } else {
+                    // Add a class to the parent label of the incorrect option
+                    radioButtons[i].parentNode.classList.add('incorrect-answer');
+                    scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
+                }
 
-            scoreCardHTML += `<li>${question}: `;
-
-            if (selectedAnswer === correctAnswers[question]) {
-                score++;
-                scoreCardHTML += `<span class='correct-answer'>Correct</span></li>`;
-            } else {
-                scoreCardHTML += `<span class='incorrect-answer'>Incorrect</span> (${correctAnswers[question]})</li>`;
-            }
-
+            
             break;
         }
     }
