@@ -26,3 +26,15 @@ Take Demo Test:
 Click on the "Demo Test" button to attempt a sample quiz.
 Answer the questions and submit.
 View your results displayed in a chart format.
+
+Chatbot
+Quizify includes a chatbot feature to assist users with any queries or assistance needed while navigating the website.
+
+Contributing
+Contributions are welcome! If you'd like to contribute to Quizify, please fork the repository and create a pull request with your proposed changes.
+
+License
+This project is licensed under the MIT License.
+
+Feel free to customize the sections and content according to your specific project details!
+
